@@ -1,89 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>下拉搜索组件</title>
-	<style>
-		*{
-			margin: 0;
-			padding: 0;
-			font-family: '微软雅黑'
-		}
-		.datalist{
-			margin: 50px;
-			width:100px;
-		}
-		.datalist input{
-			display: block;
-			padding-left: 10px;
-			width: 100%;
-			height: 20px;
-			outline: none;
-			border: 1px solid #666;
-			border-radius: 3px;
-			font-size: 16px;
-		}
-		.datalist input:hover{
-			border-color: #4f98f4;
-		}
-		.datalist input:focus ~ ul{
-			display: block;
-		}
 
-		.datalist ul{
-			margin-top: 1px;
-			display: none;
-			width: 110%;
-			border: 1px solid #666;
-			border-radius: 3px;
-			font-size: 16p;
-		}
-		.datalist ul:hover{
-			border-color: #4f98f4;
-		}
-		.datalist ul li{
-			padding-left: 10px;
-			list-style: none;
-		}
-		.datalist ul li:hover{
-			background-color: #4f98f4;
-			color: #fff;
-			cursor: pointer;
-		}
-		.datalist ul li.no-result{
-			color: gray;
-		}
-		.datalist ul li.no-result:hover{
-			color: #fff;
-		}
-	</style>
+<head>
+    <meta charset="UTF-8">
+    <title>下拉搜索组件</title>
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: '微软雅黑'
+        }
+        
+        .datalist {
+            margin: 50px;
+            width: 100px;
+        }
+        
+        .datalist input {
+            display: block;
+            padding-left: 10px;
+            width: 100%;
+            height: 20px;
+            outline: none;
+            border: 1px solid #666;
+            border-radius: 3px;
+            font-size: 16px;
+        }
+        /*.datalist input:hover {
+            border-color: #4f98f4;
+        }
+        */
+        
+        .datalist input:focus~ul {
+            display: block;
+        }
+        
+        .datalist ul {
+            margin-top: 1px;
+            display: none;
+            width: 100%;
+            overflow: auto;
+            border: 1px solid #666;
+            border-radius: 3px;
+            font-size: 16p;
+        }
+        
+        .datalist ul:hover {
+            border-color: #4f98f4;
+        }
+        
+        .datalist ul li {
+            padding-left: 10px;
+            list-style: none;
+        }
+        
+        .datalist ul li:hover {
+            background-color: #4f98f4;
+            color: #fff;
+            cursor: pointer;
+        }
+        
+        .datalist ul li.no-result {
+            color: gray;
+        }
+        
+        .datalist ul li.no-result:hover {
+            color: #fff;
+        }
+    </style>
 </head>
+
 <body>
-	<div class="datalist">
-		<input name="name" type="text" placeholder="请选择" autocomplete="off">
-		<ul>
-			<li>路西</li>
-			<li>杰西</li>
-			<li>杰克</li>
-			<li>玛丽</li>
-		</ul>
-	</div>
-	<script src="/node_modules/jquery/dist/jquery.min.js"></script>
-	<script>
-	$(function () {
-		$('.datalist input').on('keyup',function () {
-			var $ul=$(this).next();
-			$ul.find('.no-result').remove();
-			var $result=$ul.find('li').hide().filter(':contains("'+this.value+'")');
-			if(!$result.length){
-				$ul.append('<li class="no-result">没有匹配项</li>')
-			}else{
-				$result.show();
-			}
-		}).next().find('li').on('mouseenter',function () {
-			$(this).parent().prev().val(this.innerHTML);
-		});
-	});
-	</script>
+    <div class="datalist">
+        <input name="name" class="form-control" type="text" placeholder="请选择" autocomplete="off">
+        <ul>
+            <li>路西</li>
+            <li>杰西</li>
+            <li>杰克</li>
+            <li>玛丽</li>
+        </ul>
+    </div>
+    <div class="datalist">
+        <input name="name" class="form-control" type="text" placeholder="请选择" autocomplete="off">
+        <ul>
+            <li>路西</li>
+            <li>杰西</li>
+            <li>杰克</li>
+            <li>玛丽</li>
+        </ul>
+    </div>
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+        $(function() {
+            $('.datalist input').on('keyup', function() {
+                    var $ul = $(this).next();
+                    $ul.find('.no-result').remove();
+                    var $result = $ul.find('li').hide().filter(':contains("' + this.value + '")');
+                    if (!$result.length) {
+                        $ul.append('<li class="no-result">没有匹配项</li>')
+                    } else {
+                        $result.show();
+                    }
+                })
+                .next().find('li')
+                .on('mousedown', function() {
+                    $(this).parent().prev().val(this.innerHTML);
+                });
+        });
+    </script>
 </body>
+
 </html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/node_modules/._jquery-editable-select@2.2.5@jquery-editable-select/dist/jquery-editable-select.css">
+    <title>Document</title>
+</head>
+
+
+<body>
+    <select class="form-control" id="editable-select">
+	    <option>Alfa Romeo</option>
+	    <option>Audi</option>
+	    <option>BMW</option>
+	    <option>Citroen</option>
+    </select>
+
+
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/node_modules/._jquery-editable-select@2.2.5@jquery-editable-select/dist/jquery-editable-select.js"></script>
+    <script>
+        $('#editable-select')
+            .editableSelect()
+            .on('select.editable-select', function(e, li) {
+                console.log(li.text());
+            });;
+    </script>
+</body>
+
+</html>
