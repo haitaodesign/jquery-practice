@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bootstrap栅格系统布局</title>
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        .col-sm-4 {
+            height: 100px;
+            border: 1px solid #fff;
+            ;
+            background-color: #eee;
+        }
+        
+        label {
+            margin-right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <!-- form-line 内联表单-->
+        <div class="row form-inline">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="user">用户名：</label>
+                    <input class="form-control" id="user" type="text" name="" value="">
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <label for="user2">用户名：</label>
+                <input id="user2" class="form-control" type="text" name="" value="">
+            </div>
+            <div class="col-sm-4">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
