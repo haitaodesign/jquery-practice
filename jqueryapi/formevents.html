@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表单事件api</title>
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        #other,
+        .other {
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>blur事件</h1>
+    <form class="form-inline">
+        <input id="target" class="form-control" type="text" name="" value="field1">
+        <input class="form-control" type="text" value="field2">
+    </form>
+    <div id="other" type="button" class="btn btn-default">Trigger the handler</div>
+    <hr>
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+        //第一个输入框失去焦点时会触发此事件
+        $('#target').blur(function() {
+            alert('Handler for .blur called.');
+        });
+        //可是手动触发此事件
+        $('#other').click(function() {
+            $("#target").blur();
+        });
+        //可以批量触发blur事件
+        //$('p').blur();
+    </script>
+    <h1>change()事件</h1>
+    <form class="form-inline">
+        <input class="target" type="text" class="form-control" value="Field1">
+        <select name="" id="" class="form-control target">
+            <option value="option1" selected="selected">Option1</option>
+            <option value="option2">Option2</option>
+        </select>
+    </form>
+    <div class="btn btn-default other">Trigger the handler！</div>
+    <script>
+        $('.target').change(function() {
+            alert('Handler for .change() called.');
+        });
+    </script>
+    <hr>
+    <select name="sweets" class="form-control select2" multiple="multiple">
+        <option>Chocolate</option>
+        <option>Candy</option>
+        <option>Taffy</option>
+        <option>Fudge</option>
+        <option>Cookie</option>
+    </select>
+    <div class="div"></div>
+    <script>
+        $('.select2').change(function() {
+            var str = '';
+            $('.select2 option:selected').each(function() {
+                str += $(this).text() + ' ';
+            });
+            $(".div").text(str).css('color', 'red');
+        });
+        //如何实时检测输入的值？
+    </script>
+    <hr>
+    <h1>select()事件</h1>
+    <form class="form-inline select3">
+        <input type="text" name="" value="Some text">
+        <input type="text" name="" value="to test on">
+        <div class="div3"></div>
+    </form>
+    <script>
+        $('.select3 input').select(function() {
+            $('.div3').text("Something was selected").show().css('color', 'red').fadeOut(1000);
+        });
+    </script>
+    <h1>focus()事件</h1>
+    <input class="form-control" type="text" id="login">
+    <script>
+        $('.select3 input').focus(function() {
+            console.log('获得焦点！');
+        });
+        //页面加载完成时获得焦点
+        $(document).ready(function() {
+            $('#login').focus();
+        });
+    </script>
+    <h1>focusin()事件和focusout()事件</h1>
+
+    <hr>
+    <h1>submit()事件</h1>
+    <!--什么情况下会导致表单被提交？
+        如何阻止表单提交？
+    -->
+
+    <!-- 单选框选中事件监听-->
+    <div class="row testchange" style="margin-left:10px;">
+        <label class="radio-inline">
+            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
+        </label>
+    </div>
+    <script>
+        $(".testchange input[name=inlineRadioOptions]").click(function() {
+            console.log(this);
+        });
+    </script>
+
+
+
+</body>
+
+
+</html>
