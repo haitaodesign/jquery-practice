@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jquery选择器</title>
+</head>
+
+<body>
+    <!-- jquery选择器——属性选择器
+        $("[attribute|='value']")——以value(后跟一个连字符('-'))为前缀开头的属性值会被选中
+        $("[attribute*='value']")——包含value的属性值会被选中
+        $("[attribute~='value']")——属性值是以空白分隔符定义的字符串，其中包含value的会被选中
+        $("[attribute$='value']")——以value结尾的属性值会被选中
+        $("[attribute='value']")——给定的属性值与元素的属性值完全匹配的会被选中
+        $("[attribute!='value']")——不存在指定属性值或者属性值不存在的
+        $("[attribute^='value']")——以value开头的属性值会被选中
+        $("[attribute='value']")——具有指定属性值得元素
+        $("[attribute='value'],[attribute1='value1'],[attribute2='value2']")——多属性选择器
+    -->
+    <!-- jquery选择器——基本选择器
+        *选择所有元素 .class #id element 多选择器
+    -->
+    <!-- 基础过滤   注意：jquery扩展方法对性能有响应，应该使用其他方案代替.filter("")
+        $(":animated")——选择所有正在执行动画效果的元素。注：此选择器是jquery的一个扩展，
+        不是css规范的一部分，为了提高性能应该先使用css选择器选择元素，然后使用.filter(':animated')
+        $(":eq(index)")——在匹配的集合中选择索引值为index的元素
+        $(":even")
+        $(":first")
+        $(":focus")
+        $(":gt(index)")——选择匹配集合中所有大于给定索引值得元素，有性能问题，slice替代方案
+        $("header")——选择所有标题元素
+        $(":lang()")——选择指定语言的元素
+        $(":last")
+        $(":lt(index)")——选择匹配集合中所有小于给定索引值得元素
+        $(":not()")
+        $(":odd")
+        $(":root")
+        $(":target")——选择由文档URI的格式化识别码表示的目标元素。(此用法不需了解)
+    -->
+    <!-- 子元素过滤选择器
+
+    -->
+    <!-- 内容过滤
+         $(":contains()")——选择所有包含指定文本的元素
+         $(":empty")——选择所有没有子元素的元素（包括文本节点）
+         扩展方法使用其他替代方案
+         $(":has()")——选择至少包含指定选择器匹配的一个元素
+         $(":parent")——选择所有含有子元素或者文本的父级元素
+
+    -->
+
+    <!-- 表单选择器,通过判断类型type选择
+
+    -->
+
+    <!-- 层级选择器
+         (E > F)
+         (E F)
+         (pre + next)
+         (pre + siblings)
+    -->
+    <!-- jquer扩展
+
+    -->
+    <!-- 可见性过滤
+         :hidden——选择所有隐藏元素
+         :visible——选择有所可见元素
+
+    -->
+
+</body>
+
+</html>
