@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="myPlug"></div>
+	<script src="/node_modules/jquery/dist/jquery.min.js"></script>
+	<script>
+		$(function () {
+			var $myPlug = $("#myPlug");
+			$myPlug.helloWorldPlug({
+				action: "http://www.baid.com:3000/html",
+				name:"username",
+				text:"提交",
+				click:function () {
+					var val = $(this).prev().val();
+					console.log(val);
+					$(this).parent().submit();
+				}
+			});
+		});
+
+		//里面生成一个文本框和一个按钮，
+		//当点击按钮的时候，将文本框里面输入的内容打印到控制台
+		//参数,默认值
+		//
+		$.fn.helloWorldPlug=function (options) {
+			options = options || {};
+			this.html("<form action='"+options.action+"'><input><button type='button'>"+options.text+"</button></form>");
+			this.find("button").on("click",function () {
+				var val = $(this).prev().val();
+				console.log(val);
+			});
+		}
+	</script>
+</body>
+</html>

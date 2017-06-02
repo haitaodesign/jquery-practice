@@ -148,19 +148,31 @@
 				$selector.find(".seconds").html(html);
 			}
 			getTimeFiled();
+
+			function setFieldValue($filed,value) {
+				value = Number(value);
+				value = Math.max(value,0);
+				$filed.attr("value",value).css({
+					transform:"translateY(-"+value*24+"px)"
+				});
+				var index = $filed.index();
+				var start = index*2 + index;
+				var $content = $filed.parent().prevAll('.content');
+				var times = $content.val().split(":");
+				times[index] = value<10?"0"+value:value;
+				$content.val(times.join(":"));
+				setSelection($content[0],start,start+2);
+			}
+
 			$('.time-picker .content').on("focus",function () {
 				if(!this.value){
 					var $selector = $(".time-picker .selector");
 					this.value=getSystemTime();
 					var time = this.value.split(":");
-					$selector.children().first().attr("value",Number(time[0])).css({
-						transform: "translateY(-"+Number(time[0])*24+"px)"
-					}).next().attr("value",Number(time[1])).css({
-						transform: "translateY(-"+Number(time[1])*24+"px)"
-					}).next().attr("value",Number(time[2])).css({
-						transform: "translateY(-"+Number(time[2])*24+"px)"
-					})
-					
+					var $first=$selector.children().first();
+					setFieldValue($first,time[0]);
+					setFieldValue($first = $first.next(),time[1]);
+					setFieldValue($first = $first.next(),time[2]);
 				}
 				$(this).addClass("selecting").nextAll(".selector").show(50);
 				setSelection(this,0,10);
@@ -189,9 +201,10 @@
 				}else{
 					currValue--;
 				}
-				$field.attr("value",currValue).css({
-					transform: "translateY(-"+currValue*24+"px)"
-				})	
+				setFieldValue($field,currValue);
+			}).find("li").on("click",function () {
+				var $this = $(this);
+				setFieldValue($this.parent(),Number($this.html()));
 			});
 		});
 		
